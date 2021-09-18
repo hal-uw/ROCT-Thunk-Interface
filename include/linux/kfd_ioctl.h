@@ -53,6 +53,7 @@ struct kfd_ioctl_create_queue_args {
 	uint32_t queue_type;		/* to KFD */
 	uint32_t queue_percentage;	/* to KFD */
 	uint32_t queue_priority;	/* to KFD */
+	uint64_t queue_deadline;	/* to KFD */
 	uint32_t queue_id;		/* from KFD */
 
 	uint64_t eop_buffer_address;	/* to KFD */
@@ -74,6 +75,7 @@ struct kfd_ioctl_update_queue_args {
 	uint32_t ring_size;		/* to KFD */
 	uint32_t queue_percentage;	/* to KFD */
 	uint32_t queue_priority;	/* to KFD */
+	uint64_t queue_deadline;	/* to KFD */
 };
 
 struct kfd_ioctl_set_cu_mask_args {

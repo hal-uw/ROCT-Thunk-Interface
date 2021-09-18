@@ -287,6 +287,7 @@ hsaKmtCreateQueue(
     HSA_QUEUE_TYPE      Type,             //IN
     HSAuint32           QueuePercentage,  //IN
     HSA_QUEUE_PRIORITY  Priority,         //IN
+    HSAuint64		QueueDeadline,    //IN
     void*               QueueAddress,     //IN
     HSAuint64           QueueSizeInBytes, //IN
     HsaEvent*           Event,            //IN
@@ -303,6 +304,7 @@ hsaKmtUpdateQueue(
     HSA_QUEUEID         QueueId,        //IN
     HSAuint32           QueuePercentage,//IN
     HSA_QUEUE_PRIORITY  Priority,       //IN
+    HSAuint64		QueueDeadline,  //IN
     void*               QueueAddress,   //IN
     HSAuint64           QueueSize,      //IN
     HsaEvent*           Event           //IN

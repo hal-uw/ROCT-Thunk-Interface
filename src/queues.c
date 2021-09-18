@@ -463,6 +463,7 @@ HSAKMT_STATUS HSAKMTAPI hsaKmtCreateQueue(HSAuint32 NodeId,
 					  HSA_QUEUE_TYPE Type,
 					  HSAuint32 QueuePercentage,
 					  HSA_QUEUE_PRIORITY Priority,
+					  HSAuint64 QueueDeadline,
 					  void *QueueAddress,
 					  HSAuint64 QueueSizeInBytes,
 					  HsaEvent *Event,
@@ -537,6 +538,7 @@ HSAKMT_STATUS HSAKMTAPI hsaKmtCreateQueue(HSAuint32 NodeId,
 	args.ring_size = QueueSizeInBytes;
 	args.queue_percentage = QueuePercentage;
 	args.queue_priority = priority_map[Priority+3];
+	args.queue_deadline = QueueDeadline;
 
 	err = kmtIoctl(kfd_fd, AMDKFD_IOC_CREATE_QUEUE, &args);
 
@@ -584,6 +586,7 @@ HSAKMT_STATUS HSAKMTAPI hsaKmtCreateQueue(HSAuint32 NodeId,
 HSAKMT_STATUS HSAKMTAPI hsaKmtUpdateQueue(HSA_QUEUEID QueueId,
 					  HSAuint32 QueuePercentage,
 					  HSA_QUEUE_PRIORITY Priority,
+					  HSAuint64 QueueDeadline,
 					  void *QueueAddress,
 					  HSAuint64 QueueSize,
 					  HsaEvent *Event)
@@ -603,6 +606,7 @@ HSAKMT_STATUS HSAKMTAPI hsaKmtUpdateQueue(HSA_QUEUEID QueueId,
 	arg.ring_base_address = (uintptr_t)QueueAddress;
 	arg.ring_size = QueueSize;
 	arg.queue_percentage = QueuePercentage;
+	arg.queue_deadline = QueueDeadline;
 	arg.queue_priority = priority_map[Priority+3];
 
 	int err = kmtIoctl(kfd_fd, AMDKFD_IOC_UPDATE_QUEUE, &arg);
